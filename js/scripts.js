@@ -1,30 +1,34 @@
 $(document).ready(function() {
- $("form#pingPongForm").submit(function(event) {
-   $("#userOutput").empty();
-   var userInput = parseInt($("input#number").val());
-   var result = pingPongFun(userInput);
-   result.forEach(function(output) {
-   $("#userOutput").append("<li>" + output + "</li>");
-   // $(".#userOutput").animate("url('')")
-   event.preventDefault();
+  $("form#ping-pong").submit(function(event) {
+    event.preventDefault();
+   var display = parseInt($("input#number").val());
+   var result = answer(display);
+   $(".Push").text(result);
+  });
  });
- alert("pingpong");
-});
-});
-
-//business
-function pingPongFun(userInput){
-var result = [];
-for (var i = 1; i <= userInput; i++){
- if ((i % 15) === 0){
-   result.push ("Ping-Pong");
- } else if ((i % 5) === 0){
-   result.push ("Pong");
-
- } else if ((i % 3) === 0){
-   result.push ("Ping");
- } else
-   result.push (i);
+// business logic
+var answer=function(display){
+ for(i=1; i<=display; i++){
+ // if the number is divisible by 15, write "Ping Pong"
+ if ( i % 15 === 0) {
+  console.log("pingpong");
+  $(".Push").append("<li>"+"pingpong"+"</li>");
+  //return "PingPong";
+  }
+ // if the number is divisible by 3, write "Ping"
+ else if ( i % 3 === 0) {
+  $(".Push").append("<li>"+"ping"+"</>");
+  //return "Ping";
+ }
+  // otherwise, write "po"
+ else if ( i % 5 === 0) {
+  $(".Push").append("<li>"+"pong"+"</>");
+   //return "Pong";
+   }
+ else {
+   console.log("qwert");
+   $(".Push").append("<li>"+i+"</>");
+  //return(i);
+ }
 }
-return result;
 }
